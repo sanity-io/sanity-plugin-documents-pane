@@ -19,7 +19,7 @@ import DocumentsPane from 'sanity-plugin-documents-pane'
 // ...all other list items
 
 S.view
-  .component(SeoPane)
+  .component(DocumentsPane)
   .options({
     query: `*[!(_id in path("drafts.**")) && references($id)]`,
     params: { id: `_id` },
