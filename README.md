@@ -2,7 +2,7 @@
 
 Display a GROQ-queried list of Documents in a View Pane.
 
-![Incoming References](https://user-images.githubusercontent.com/209129/108927411-21aa7f00-7638-11eb-9cf7-334598ac4103.png)
+![Incoming References](https://user-images.githubusercontent.com/9684022/121202594-52bc6180-c86d-11eb-897d-f418047b3d22.png)
 
 
 ## Installation
