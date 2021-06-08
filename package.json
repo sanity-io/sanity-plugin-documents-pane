@@ -19,6 +19,7 @@
   "author": "Simeon Griggs <simeon@sanity.io>",
   "license": "MIT",
   "dependencies": {
+    "dlv": "^1.1.3",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
