@@ -7,7 +7,6 @@ export const useDocuments = (query = ``, params = {}) => {
   const [documents, setDocuments] = useState([])
 
   const fetchDocuments = () => {
-    console.log(query, params)
     client.fetch(query, params).then((res) => setDocuments(res))
   }
 
