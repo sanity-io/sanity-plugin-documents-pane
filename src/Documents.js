@@ -12,8 +12,10 @@ import styles from './Documents.module.css'
 
 const client = sanityClient.withConfig({apiVersion: `2021-05-19`})
 
-export default function Documents({query, params, _rev, debug}) {
-  const {isLoading, error, data} = useQuery(['useDocuments', _rev], () =>
+export default function Documents(props) {
+  const {query, params, debug} = props
+
+  const {isLoading, error, data} = useQuery(['useDocuments', { props }], () =>
     client.fetch(query, params)
   )
 
