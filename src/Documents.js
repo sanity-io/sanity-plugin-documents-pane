@@ -13,17 +13,26 @@ import styles from './Documents.module.css'
 const client = sanityClient.withConfig({apiVersion: `2021-05-19`})
 
 export default function Documents(props) {
-  const {query, params, debug} = props
+  const {query, params, debug, _rev} = props
 
   const {isLoading, error, data} = useQuery(['useDocuments', { props }], () =>
     client.fetch(query, params)
   )
 
+  if (!_rev) {
+    return (<Stack padding={4} space={5}>
+      <Box>
+        <Text>Document must be Published</Text>
+      </Box>
+      {debug && <Debug query={query} params={params} />}
+    </Stack>)
+  }
+
   if (isLoading) {
     return (
       <Box padding={4}>
         <Flex justify="center" align="center">
-          <Spinner />
+          <Spinner muted />
         </Flex>
       </Box>
     )

@@ -11,7 +11,7 @@ const queryClient = new QueryClient()
 export default function DocumentsPane({document: sanityDocument, options}) {
   const {query, params, useDraft, debug} = options
   const doc = useDraft ? sanityDocument.displayed : sanityDocument.published
-  const {_rev} = doc
+  const {_rev} = doc ?? {}
 
   const paramValues = Object.keys(params).reduce(
     (acc, key) => ({...acc, [key]: delve(doc, params[key])}),
