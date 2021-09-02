@@ -38,6 +38,10 @@ The `.options()` configuration works as follows:
 - `useDraft` (bool, optional, default: `false`) When populating the `params` values, it will use the `published` version of the document by default.
 - `debug` (bool, optional, default: `false`) In case of an error or the query returning no documents, setting to `true` will display the query and params that were used.
 
+## Thanks!
+
+This plugin is based on [Incoming References](https://github.com/sanity-io/sanity/tree/victoria/incoming-refs-preview/packages/test-studio/src/previews/incoming-refs) originally written by Victoria Bergquist.
+
 ## License
 
 MIT © Simeon Griggs
