@@ -19,13 +19,3 @@ export default function Debug({query, params}) {
     </>
   )
 }
-
-Debug.propTypes = {
-  params: PropTypes.object,
-  query: PropTypes.string,
-}
-
-Debug.defaultProps = {
-  params: {},
-  query: ``,
-}
