@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {Code, Box, Label, Stack} from '@sanity/ui'
 
 export default function Debug({query, params}) {
