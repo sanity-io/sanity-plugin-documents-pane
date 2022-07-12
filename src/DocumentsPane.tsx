@@ -2,6 +2,8 @@ import React from 'react'
 import delve from 'dlv'
 import {QueryClient, QueryClientProvider} from 'react-query'
 import {Stack} from '@sanity/ui'
+import {usePaneRouter} from '@sanity/desk-tool'
+import {SanityDocument} from '@sanity/client'
 
 import Documents from './Documents'
 import Feedback from './Feedback'
@@ -9,8 +11,22 @@ import Debug from './Debug'
 
 const queryClient = new QueryClient()
 
-export default function DocumentsPane({document: sanityDocument, options}) {
+type DocumentsPaneOptions = {
+  query: string
+  params: {[key: string]: string}
+  debug: boolean
+  useDraft: boolean
+}
+
+type DocumentsPaneProps = {
+  document: SanityDocument
+  options: DocumentsPaneOptions
+}
+
+export default function DocumentsPane(props: DocumentsPaneProps) {
+  const {document: sanityDocument, options} = props
   const {query, params, useDraft, debug} = options
+  const paneRouter = usePaneRouter()
 
   const doc = useDraft ? sanityDocument.displayed : sanityDocument.published
   const {_rev} = doc ?? {}
@@ -31,7 +47,7 @@ export default function DocumentsPane({document: sanityDocument, options}) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Documents query={query} params={paramValues} debug={debug} />
+      <Documents query={query} params={paramValues} debug={debug} paneRouter={paneRouter} />
     </QueryClientProvider>
   )
 }
