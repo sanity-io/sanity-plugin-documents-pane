@@ -1,37 +1,31 @@
 import React, {useCallback} from 'react'
-import {useQuery} from 'react-query'
 import {Box, Button, Stack, Flex, Spinner} from '@sanity/ui'
 import {fromString as pathFromString} from '@sanity/util/paths'
-import {PaneRouterContextValue} from '@sanity/desk-tool/dist/dts/contexts/paneRouter/types'
+import {usePaneRouter} from '@sanity/desk-tool'
 import Preview from 'part:@sanity/base/preview'
 import schema from 'part:@sanity/base/schema'
-import sanityClient from 'part:@sanity/base/client'
 
 import Debug from './Debug'
 import Feedback from './Feedback'
-
-const client = sanityClient.withConfig({apiVersion: `2021-05-19`})
+import useListeningQuery from './hooks/useListeningQuery'
 
 type DocumentsProps = {
   query: string
   params: {[key: string]: string}
   debug: boolean
-  paneRouter: PaneRouterContextValue
 }
 
 export default function Documents(props: DocumentsProps) {
-  const {query, params, debug, paneRouter} = props
-  const {routerPanesState, groupIndex, handleEditReference} = paneRouter
+  const {query, params, debug} = props
+  const {routerPanesState, groupIndex, handleEditReference} = usePaneRouter()
 
-  const {isLoading, error, data} = useQuery(['useDocuments', {props}], () =>
-    client.fetch(query, params)
-  )
-
-  const childParams = routerPanesState[groupIndex + 1]?.[0].params || {}
-  const {parentRefPath} = childParams
+  const {loading, error, data} = useListeningQuery(query, params)
 
   const handleClick = useCallback(
     (id, type) => {
+      const childParams = routerPanesState[groupIndex + 1]?.[0].params || {}
+      const {parentRefPath} = childParams
+
       handleEditReference({
         id,
         type,
@@ -41,10 +35,10 @@ export default function Documents(props: DocumentsProps) {
         template: type,
       })
     },
-    [routerPanesState]
+    [routerPanesState, groupIndex, handleEditReference]
   )
 
-  if (isLoading) {
+  if (loading) {
     return (
       <Box padding={4}>
         <Flex justify="center" align="center">

@@ -1,15 +1,11 @@
 import React from 'react'
 import delve from 'dlv'
-import {QueryClient, QueryClientProvider} from 'react-query'
 import {Stack} from '@sanity/ui'
-import {usePaneRouter} from '@sanity/desk-tool'
 import {SanityDocument} from '@sanity/client'
 
 import Documents from './Documents'
 import Feedback from './Feedback'
 import Debug from './Debug'
-
-const queryClient = new QueryClient()
 
 type DocumentsPaneOptions = {
   query: string
@@ -26,7 +22,6 @@ type DocumentsPaneProps = {
 export default function DocumentsPane(props: DocumentsPaneProps) {
   const {document: sanityDocument, options} = props
   const {query, params, useDraft, debug} = options
-  const paneRouter = usePaneRouter()
 
   const doc = useDraft ? sanityDocument.displayed : sanityDocument.published
   const {_rev} = doc ?? {}
@@ -45,9 +40,5 @@ export default function DocumentsPane(props: DocumentsPaneProps) {
     )
   }
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Documents query={query} params={paramValues} debug={debug} paneRouter={paneRouter} />
-    </QueryClientProvider>
-  )
+  return <Documents query={query} params={paramValues} debug={debug} />
 }
