@@ -1,7 +1,9 @@
 /test
 /coverage
+.babelrc
 .editorconfig
 .eslintrc
+.eslintignore
 .gitignore
 .github
 .prettierrc
