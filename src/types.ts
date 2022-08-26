@@ -12,9 +12,9 @@ export type DocumentsPaneQueryParams = (params: {document: DocumentVersionsColle
 
 export type DocumentsPaneOptions = {
   query: string
-  params: DocumentsPaneQueryParams
-  debug: boolean
-  useDraft: boolean
+  params?: DocumentsPaneQueryParams
+  debug?: boolean
+  useDraft?: boolean
 }
 
 export type DocumentsPaneProps = {

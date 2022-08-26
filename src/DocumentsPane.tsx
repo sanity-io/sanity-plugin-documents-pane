@@ -9,7 +9,7 @@ import resolveParams from './resolveParams'
 
 export default function DocumentsPane(props: DocumentsPaneProps) {
   const {document, options} = props
-  const {query, params, useDraft, debug} = options
+  const {query, params, useDraft = false, debug = false} = options
 
   if (useDraft && typeof params === 'function') {
     return (
