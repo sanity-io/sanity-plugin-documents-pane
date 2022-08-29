@@ -6,10 +6,17 @@ import Feedback from './Feedback'
 import Debug from './Debug'
 import {DocumentsPaneProps} from './types'
 import resolveParams from './resolveParams'
+import resolveInitialValueTemplates from './resolveInitialValueTemplates'
 
 export default function DocumentsPane(props: DocumentsPaneProps) {
   const {document, options} = props
-  const {query, params, useDraft = false, debug = false} = options
+  const {
+    query,
+    params,
+    useDraft = false,
+    debug = false,
+    initialValueTemplates: initialValueTemplatesResolver,
+  } = options
 
   if (useDraft && typeof params === 'function') {
     return (
@@ -25,6 +32,11 @@ export default function DocumentsPane(props: DocumentsPaneProps) {
 
   const paramValues = resolveParams({document, params, useDraft})
 
+  const initialValueTemplates = resolveInitialValueTemplates({
+    resolver: initialValueTemplatesResolver,
+    document,
+  })
+
   if (!paramValues) {
     return (
       <Stack padding={4} space={5}>
@@ -37,5 +49,12 @@ export default function DocumentsPane(props: DocumentsPaneProps) {
     )
   }
 
-  return <Documents query={query} params={paramValues} debug={debug} />
+  return (
+    <Documents
+      query={query}
+      params={paramValues}
+      debug={debug}
+      initialValueTemplates={initialValueTemplates}
+    />
+  )
 }

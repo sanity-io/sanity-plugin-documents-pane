@@ -10,11 +10,22 @@ export interface DocumentVersionsCollection {
 // eslint-disable-next-line prettier/prettier
 export type DocumentsPaneQueryParams = (params: {document: DocumentVersionsCollection}) => ({[key: string]: string} | null) | {[key: string]: string}
 
+export interface DocumentsPaneInitialValueTemplate {
+  type: string
+  template?: string
+  params?: {[key: string]: any}
+  title: string
+}
+
+// eslint-disable-next-line prettier/prettier
+export type DocumentsPaneInitialValueTemplateResolver = (params: {document: DocumentVersionsCollection}) => DocumentsPaneInitialValueTemplate[]
+
 export type DocumentsPaneOptions = {
   query: string
   params?: DocumentsPaneQueryParams
   debug?: boolean
   useDraft?: boolean
+  initialValueTemplates?: DocumentsPaneInitialValueTemplateResolver
 }
 
 export type DocumentsPaneProps = {

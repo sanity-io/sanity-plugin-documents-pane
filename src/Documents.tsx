@@ -8,15 +8,18 @@ import schema from 'part:@sanity/base/schema'
 import Debug from './Debug'
 import Feedback from './Feedback'
 import useListeningQuery from './hooks/useListeningQuery'
+import { DocumentsPaneInitialValueTemplate } from './types'
+import NewDocument from './NewDocument'
 
 type DocumentsProps = {
   query: string
   params: {[key: string]: string}
   debug: boolean
+  initialValueTemplates: DocumentsPaneInitialValueTemplate[]
 }
 
 export default function Documents(props: DocumentsProps) {
-  const {query, params, debug} = props
+  const {query, params, debug, initialValueTemplates} = props
   const {routerPanesState, groupIndex, handleEditReference} = usePaneRouter()
 
   const {loading, error, data} = useListeningQuery(query, params)
@@ -60,6 +63,7 @@ export default function Documents(props: DocumentsProps) {
   if (!data?.length) {
     return (
       <Stack padding={4} space={5}>
+        <NewDocument initialValueTemplates={initialValueTemplates} />
         <Feedback>No Documents found</Feedback>
         {debug && <Debug query={query} params={params} />}
       </Stack>
@@ -68,6 +72,7 @@ export default function Documents(props: DocumentsProps) {
 
   return (
     <Stack padding={2} space={1}>
+      <NewDocument initialValueTemplates={initialValueTemplates} />
       {data.map((doc) => (
         <Button
           key={doc._id}
