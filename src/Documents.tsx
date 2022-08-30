@@ -8,7 +8,7 @@ import schema from 'part:@sanity/base/schema'
 import Debug from './Debug'
 import Feedback from './Feedback'
 import useListeningQuery from './hooks/useListeningQuery'
-import { DocumentsPaneInitialValueTemplate } from './types'
+import {DocumentsPaneInitialValueTemplate} from './types'
 import NewDocument from './NewDocument'
 
 type DocumentsProps = {
@@ -62,27 +62,31 @@ export default function Documents(props: DocumentsProps) {
 
   if (!data?.length) {
     return (
-      <Stack padding={4} space={5}>
+      <>
         <NewDocument initialValueTemplates={initialValueTemplates} />
-        <Feedback>No Documents found</Feedback>
-        {debug && <Debug query={query} params={params} />}
-      </Stack>
+        <Stack padding={4} space={5}>
+          <Feedback>No Documents found</Feedback>
+          {debug && <Debug query={query} params={params} />}
+        </Stack>
+      </>
     )
   }
 
   return (
-    <Stack padding={2} space={1}>
+    <>
       <NewDocument initialValueTemplates={initialValueTemplates} />
-      {data.map((doc) => (
-        <Button
-          key={doc._id}
-          onClick={() => handleClick(doc._id, doc._type)}
-          padding={2}
-          mode="bleed"
-        >
-          <Preview value={doc} type={schema.get(doc._type)} />
-        </Button>
-      ))}
-    </Stack>
+      <Stack padding={2} space={1}>
+        {data.map((doc) => (
+          <Button
+            key={doc._id}
+            onClick={() => handleClick(doc._id, doc._type)}
+            padding={2}
+            mode="bleed"
+          >
+            <Preview value={doc} type={schema.get(doc._type)} />
+          </Button>
+        ))}
+      </Stack>
+    </>
   )
 }
