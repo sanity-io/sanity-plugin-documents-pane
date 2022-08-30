@@ -3,13 +3,10 @@ import React from 'react'
 import {DocumentsPaneInitialValueTemplate} from './types'
 import {ComposeIcon} from '@sanity/icons'
 import {usePaneRouter} from '@sanity/desk-tool'
+import {uuid} from "@sanity/uuid"
 
 interface NewDocumentProps {
   initialValueTemplates: DocumentsPaneInitialValueTemplate[]
-}
-
-function newId() {
-  return Math.random().toString().replace('.', '')
 }
 
 export default function NewDocument(props: NewDocumentProps) {
@@ -24,7 +21,7 @@ export default function NewDocument(props: NewDocumentProps) {
         {initialValueTemplates.map((template) => {
           return (
             <ReferenceChildLink
-              documentId={newId()}
+              documentId={uuid()}
               documentType={template.type}
               template={{id: template.template, params: template.params}}
               parentRefPath={[]}
