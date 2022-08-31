@@ -22,10 +22,10 @@ export default function NewDocument(props: NewDocumentProps) {
           return (
             <ReferenceChildLink
               documentId={uuid()}
-              documentType={template.type}
-              template={{id: template.template, params: template.params}}
+              documentType={template.schemaType}
+              template={{id: template.template, params: template.parameters}}
               parentRefPath={[]}
-              key={`${template.type}-${template.template}`}
+              key={`${template.schemaType}-${template.template}`}
               style={{textDecoration: 'none'}}
             >
               <Button icon={<ComposeIcon />} text={template.title} mode="bleed" as="span" />

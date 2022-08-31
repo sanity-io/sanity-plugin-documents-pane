@@ -11,9 +11,9 @@ export interface DocumentVersionsCollection {
 export type DocumentsPaneQueryParams = (params: {document: DocumentVersionsCollection}) => ({[key: string]: string} | null) | {[key: string]: string}
 
 export interface DocumentsPaneInitialValueTemplate {
-  type: string
+  schemaType: string
   template?: string
-  params?: {[key: string]: any}
+  parameters?: {[key: string]: any}
   title: string
 }
 

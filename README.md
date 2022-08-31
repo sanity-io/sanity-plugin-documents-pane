@@ -63,13 +63,13 @@ const options = {
     if (id) {
       templates.push({
         // the name of the schema type that should be created (required)
-        type: 'post',
+        schemaType: 'post',
         // the title that should appear on the button - we can customize it (required)
         title: `New post by ${name}`,
         // the name of the template that should be used (optional)
         template: 'postWithAuthor',
         // values for parameters that can be passed to the template referenced above (optional)
-        params: {
+        parameters: {
           authorId: id,
         },
       })
