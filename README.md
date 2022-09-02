@@ -48,8 +48,9 @@ const options = {
   params: ({document}) => {
     // references will never point to a draft ID, so extract the regular ID
     const id = document.displayed._id?.replace('drafts.', '')
-    // if there's no ID yet, return null as we cannot resolve the parameters and the query will fail
-    if (!id) return null
+
+    // we don't have to worry about undefined parameters, 
+    // as the plugin will handle them and show an appropriate message
     return {id}
   },
   initialValueTemplates: ({document}) => {

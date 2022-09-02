@@ -8,7 +8,7 @@ export interface DocumentVersionsCollection {
 }
 
 // eslint-disable-next-line prettier/prettier
-export type DocumentsPaneQueryParams = (params: {document: DocumentVersionsCollection}) => ({[key: string]: string} | null) | {[key: string]: string}
+export type DocumentsPaneQueryParams = (params: {document: DocumentVersionsCollection}) => ({[key: string]: string}) | {[key: string]: string}
 
 export interface DocumentsPaneInitialValueTemplate {
   schemaType: string
