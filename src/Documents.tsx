@@ -8,15 +8,18 @@ import schema from 'part:@sanity/base/schema'
 import Debug from './Debug'
 import Feedback from './Feedback'
 import useListeningQuery from './hooks/useListeningQuery'
+import {DocumentsPaneInitialValueTemplate} from './types'
+import NewDocument from './NewDocument'
 
 type DocumentsProps = {
   query: string
   params: {[key: string]: string}
   debug: boolean
+  initialValueTemplates: DocumentsPaneInitialValueTemplate[]
 }
 
 export default function Documents(props: DocumentsProps) {
-  const {query, params, debug} = props
+  const {query, params, debug, initialValueTemplates} = props
   const {routerPanesState, groupIndex, handleEditReference} = usePaneRouter()
 
   const {loading, error, data} = useListeningQuery(query, params)
@@ -59,25 +62,31 @@ export default function Documents(props: DocumentsProps) {
 
   if (!data?.length) {
     return (
-      <Stack padding={4} space={5}>
-        <Feedback>No Documents found</Feedback>
-        {debug && <Debug query={query} params={params} />}
-      </Stack>
+      <>
+        <NewDocument initialValueTemplates={initialValueTemplates} />
+        <Stack padding={4} space={5}>
+          <Feedback>No Documents found</Feedback>
+          {debug && <Debug query={query} params={params} />}
+        </Stack>
+      </>
     )
   }
 
   return (
-    <Stack padding={2} space={1}>
-      {data.map((doc) => (
-        <Button
-          key={doc._id}
-          onClick={() => handleClick(doc._id, doc._type)}
-          padding={2}
-          mode="bleed"
-        >
-          <Preview value={doc} type={schema.get(doc._type)} />
-        </Button>
-      ))}
-    </Stack>
+    <>
+      <NewDocument initialValueTemplates={initialValueTemplates} />
+      <Stack padding={2} space={1}>
+        {data.map((doc) => (
+          <Button
+            key={doc._id}
+            onClick={() => handleClick(doc._id, doc._type)}
+            padding={2}
+            mode="bleed"
+          >
+            <Preview value={doc} type={schema.get(doc._type)} />
+          </Button>
+        ))}
+      </Stack>
+    </>
   )
 }

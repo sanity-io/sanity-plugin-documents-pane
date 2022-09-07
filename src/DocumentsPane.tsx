@@ -1,44 +1,60 @@
 import React from 'react'
-import delve from 'dlv'
 import {Stack} from '@sanity/ui'
-import {SanityDocument} from '@sanity/client'
 
 import Documents from './Documents'
 import Feedback from './Feedback'
 import Debug from './Debug'
-
-type DocumentsPaneOptions = {
-  query: string
-  params: {[key: string]: string}
-  debug: boolean
-  useDraft: boolean
-}
-
-type DocumentsPaneProps = {
-  document: SanityDocument
-  options: DocumentsPaneOptions
-}
+import {DocumentsPaneProps} from './types'
+import resolveParams from './resolveParams'
+import resolveInitialValueTemplates from './resolveInitialValueTemplates'
 
 export default function DocumentsPane(props: DocumentsPaneProps) {
-  const {document: sanityDocument, options} = props
-  const {query, params, useDraft, debug} = options
+  const {document, options} = props
+  const {
+    query,
+    params,
+    useDraft = false,
+    debug = false,
+    initialValueTemplates: initialValueTemplatesResolver,
+  } = options
 
-  const doc = useDraft ? sanityDocument.displayed : sanityDocument.published
-  const {_rev} = doc ?? {}
-
-  const paramValues = Object.keys(params).reduce(
-    (acc, key) => ({...acc, [key]: delve(doc, params[key])}),
-    {}
-  )
-
-  if (!_rev) {
+  if (useDraft && typeof params === 'function') {
     return (
       <Stack padding={4} space={5}>
-        <Feedback>Document must be Published to have References</Feedback>
-        {debug && <Debug query={query} params={params} />}
+        <Feedback>
+          <code>useDraft</code> should not be <code>true</code> when supplying a function for
+          <code>params</code>
+        </Feedback>
+        {debug && <Debug query={query} />}
       </Stack>
     )
   }
 
-  return <Documents query={query} params={paramValues} debug={debug} />
+  const paramValues = resolveParams({document, params, useDraft})
+
+  const initialValueTemplates = resolveInitialValueTemplates({
+    resolver: initialValueTemplatesResolver,
+    document,
+  })
+
+  if (!paramValues) {
+    return (
+      <Stack padding={4} space={5}>
+        <Feedback>
+          Parameters for this query could not be resolved. This may mean the document does not yet
+          exist or is incomplete.
+        </Feedback>
+        {debug && <Debug query={query} />}
+      </Stack>
+    )
+  }
+
+  return (
+    <Documents
+      query={query}
+      params={paramValues}
+      debug={debug}
+      initialValueTemplates={initialValueTemplates}
+    />
+  )
 }
