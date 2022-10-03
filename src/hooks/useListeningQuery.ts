@@ -1,4 +1,5 @@
-import React, {useEffect, useState, useRef} from 'react'
+import type {SanityDocument} from '@sanity/types'
+import {useEffect, useState, useRef} from 'react'
 import documentStore from 'part:@sanity/base/datastore/document'
 import {catchError, distinctUntilChanged} from 'rxjs/operators'
 import isEqual from 'react-fast-compare'
@@ -13,7 +14,7 @@ interface ListenQueryOptions {
 type ReturnShape = {
   loading: boolean
   error: boolean
-  data: any
+  data: SanityDocument[] | null
 }
 
 type Observable = {
@@ -30,7 +31,7 @@ export default function useListeningQuery(
 ): ReturnShape {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-  const [data, setData] = useState(null)
+  const [data, setData] = useState<SanityDocument[] | null>(null)
   const subscription = useRef<null | Observable>(null)
 
   useEffect(() => {
@@ -48,7 +49,7 @@ export default function useListeningQuery(
             return err
           })
         )
-        .subscribe((documents) => {
+        .subscribe((documents: SanityDocument[]) => {
           setData((current) => (isEqual(current, documents) ? current : documents))
           setLoading(false)
           setError(false)

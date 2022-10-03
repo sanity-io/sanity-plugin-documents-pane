@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "moduleResolution": "node",
+    "target": "es5",
+    "esModuleInterop": true,
+    "module": "es2015",
+    "lib": ["es2015", "es2016", "es2017", "dom"],
+    "strict": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "lib",
+    "typeRoots": ["node_modules/@types"],
+    "baseUrl": "."
+  },
+  "include": ["src/**/*"]
+}

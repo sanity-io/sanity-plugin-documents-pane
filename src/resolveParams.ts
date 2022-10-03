@@ -9,7 +9,9 @@ interface ResolveParamsOptions {
 
 type ResolveParamsReturn = undefined | {[key: string]: string}
 
-function defaultResolver(options: ResolveParamsOptions): {[key: string]: string | undefined} {
+function defaultResolver(options: ResolveParamsOptions): {
+  [key: string]: string | undefined
+} {
   const {params, document, useDraft} = options
 
   // params is optional
@@ -18,7 +20,13 @@ function defaultResolver(options: ResolveParamsOptions): {[key: string]: string 
   // legacy useDraft behaviour
   const doc = useDraft ? document.displayed : document.published
 
-  return Object.keys(params).reduce((acc, key) => ({...acc, [key]: delve(doc, params[key])}), {})
+  return Object.keys(params).reduce(
+    (acc, key) => ({
+      ...acc,
+      [key]: delve(doc, params[key as keyof DocumentsPaneQueryParams]),
+    }),
+    {}
+  )
 }
 
 export default function resolveParams(options: ResolveParamsOptions): ResolveParamsReturn {

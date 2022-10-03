@@ -3,7 +3,7 @@ import React from 'react'
 import {DocumentsPaneInitialValueTemplate} from './types'
 import {ComposeIcon} from '@sanity/icons'
 import {usePaneRouter} from '@sanity/desk-tool'
-import {uuid} from "@sanity/uuid"
+import {uuid} from '@sanity/uuid'
 
 interface NewDocumentProps {
   initialValueTemplates: DocumentsPaneInitialValueTemplate[]
@@ -19,6 +19,9 @@ export default function NewDocument(props: NewDocumentProps) {
     <Card borderBottom={true} padding={2}>
       <Flex justify="flex-end" gap={1}>
         {initialValueTemplates.map((template) => {
+          if (!template.template) {
+            return null
+          }
           return (
             <ReferenceChildLink
               documentId={uuid()}
@@ -26,7 +29,6 @@ export default function NewDocument(props: NewDocumentProps) {
               template={{id: template.template, params: template.parameters}}
               parentRefPath={[]}
               key={`${template.schemaType}-${template.template}`}
-              style={{textDecoration: 'none'}}
             >
               <Button icon={<ComposeIcon />} text={template.title} mode="bleed" as="span" />
             </ReferenceChildLink>

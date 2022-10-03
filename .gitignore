@@ -42,9 +42,8 @@ jspm_packages
 # VS Code settings
 .vscode
 
-# Lockfiles
+# Yarn lockfile
 yarn.lock
-package-lock.json
 
 # Cache
 .cache
