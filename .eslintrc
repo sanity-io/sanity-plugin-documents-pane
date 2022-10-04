@@ -1,5 +1,5 @@
 {
   "ignorePatterns": [".sanity", "dist", "node_modules"],
-  "extends": ["sanity/typescript", "prettier"],
+  "extends": ["sanity/typescript", "prettier", "@sanity/no-v2-imports"],
   "plugins": ["prettier"]
 }

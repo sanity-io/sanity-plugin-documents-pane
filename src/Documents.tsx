@@ -1,9 +1,9 @@
 import React, {useCallback} from 'react'
 import {Box, Button, Stack, Flex, Spinner} from '@sanity/ui'
 import {fromString as pathFromString} from '@sanity/util/paths'
-import {usePaneRouter} from '@sanity/desk-tool'
-import Preview from 'part:@sanity/base/preview'
-import schema from 'part:@sanity/base/schema'
+import {useSchema} from 'sanity'
+import {usePaneRouter} from 'sanity/desk'
+import {SanityPreview} from 'sanity/_unstable'
 
 import Debug from './Debug'
 import Feedback from './Feedback'
@@ -21,6 +21,7 @@ type DocumentsProps = {
 export default function Documents(props: DocumentsProps) {
   const {query, params, debug, initialValueTemplates} = props
   const {routerPanesState, groupIndex, handleEditReference} = usePaneRouter()
+  const schema = useSchema()
 
   const {loading, error, data} = useListeningQuery(query, params)
 
@@ -76,16 +77,22 @@ export default function Documents(props: DocumentsProps) {
     <>
       <NewDocument initialValueTemplates={initialValueTemplates} />
       <Stack padding={2} space={1}>
-        {data.map((doc) => (
-          <Button
-            key={doc._id}
-            onClick={() => handleClick(doc._id, doc._type)}
-            padding={2}
-            mode="bleed"
-          >
-            <Preview value={doc} type={schema.get(doc._type)} />
-          </Button>
-        ))}
+        {data.map((doc) => {
+          const schemaType = schema.get(doc._type)
+          if (!schemaType) {
+            return null
+          }
+          return (
+            <Button
+              key={doc._id}
+              onClick={() => handleClick(doc._id, doc._type)}
+              padding={2}
+              mode="bleed"
+            >
+              <SanityPreview value={doc} schemaType={schemaType} />
+            </Button>
+          )
+        })}
       </Stack>
     </>
   )

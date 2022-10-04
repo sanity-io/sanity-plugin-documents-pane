@@ -2,7 +2,7 @@ import {Button, Card, Flex} from '@sanity/ui'
 import React from 'react'
 import {DocumentsPaneInitialValueTemplate} from './types'
 import {ComposeIcon} from '@sanity/icons'
-import {usePaneRouter} from '@sanity/desk-tool'
+import {usePaneRouter} from 'sanity/desk'
 import {uuid} from '@sanity/uuid'
 
 interface NewDocumentProps {
