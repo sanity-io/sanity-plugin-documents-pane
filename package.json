@@ -1,6 +1,6 @@
 {
   "name": "sanity-plugin-documents-pane",
-  "version": "1.0.0-v3-studio.1",
+  "version": "2.0.0-v3-studio.1",
   "description": "Displays the results of a GROQ query in a View Pane",
   "source": "./src/index.ts",
   "exports": {
