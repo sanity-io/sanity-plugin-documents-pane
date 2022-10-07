@@ -1,9 +1,8 @@
 import React, {useCallback} from 'react'
 import {Box, Button, Stack, Flex, Spinner} from '@sanity/ui'
 import {fromString as pathFromString} from '@sanity/util/paths'
-import {useSchema} from 'sanity'
+import {SanityPreview, useSchema} from 'sanity'
 import {usePaneRouter} from 'sanity/desk'
-import {SanityPreview} from 'sanity/_unstable'
 
 import Debug from './Debug'
 import Feedback from './Feedback'
