@@ -45,6 +45,10 @@ jspm_packages
 # Yarn lockfile
 yarn.lock
 
+# IntelliJ
+.idea
+*.iml
+
 # Cache
 .cache
 
