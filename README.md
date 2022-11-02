@@ -1,8 +1,11 @@
 # sanity-plugin-documents-pane
 
-> This version of `sanity-plugin-documents-pane` is for [Sanity Studio V3](https://www.sanity.io/blog/sanity-studio-v3-developer-preview), which is currently in developer preview.
+> **NOTE**
 >
-> The Studio V2 compatible version can be found on the [V2 branch](https://github.com/sanity-io/sanity-plugin-documents-pane).
+> This is the **Sanity Studio v3 version** of sanity-plugin-documents-pane.
+>
+> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-documents-pane).
+
 
 Displays the results of a GROQ query in a View Pane. With the ability to use field values in the current document as query parameters.
 
@@ -101,5 +104,19 @@ This plugin is based on [Incoming References](https://github.com/sanity-io/sanit
 
 ## License
 
-MIT © Sanity.io
-See [LICENSE](license)
+MIT-licensed. See LICENSE.
+
+## Develop & test
+
+This plugin uses [@sanity/plugin-kit](https://github.com/sanity-io/plugin-kit)
+with default configuration for build & watch scripts.
+
+See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
+on how to run this plugin with hotreload in the studio.
+
+### Release new version
+
+Run ["CI & Release" workflow](https://github.com/sanity-io/sanity-plugin-documents-pane/actions/workflows/main.yml).
+Make sure to select the main branch and check "Release new version".
+
+Semantic release will only release on configured branches, so it is safe to run release on any branch.

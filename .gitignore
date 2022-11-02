@@ -42,9 +42,6 @@ jspm_packages
 # VS Code settings
 .vscode
 
-# Yarn lockfile
-yarn.lock
-
 # IntelliJ
 .idea
 *.iml
@@ -52,8 +49,10 @@ yarn.lock
 # Cache
 .cache
 
-# Compiled plugin
-/lib
+# Yalc
+.yalc
+yalc.lock
 
-# Parcel cache
-.parcel-cache
+# Compiled plugin
+lib
+

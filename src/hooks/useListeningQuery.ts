@@ -59,7 +59,7 @@ export default function useListeningQuery(
     return () => {
       return subscription.current ? subscription.current.unsubscribe() : undefined
     }
-  }, [query, params, options])
+  }, [query, params, options, documentStore])
 
   return {loading, error, data}
 }

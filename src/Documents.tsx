@@ -25,7 +25,7 @@ export default function Documents(props: DocumentsProps) {
   const {loading, error, data} = useListeningQuery(query, params)
 
   const handleClick = useCallback(
-    (id, type) => {
+    (id: string, type: string) => {
       const childParams = routerPanesState[groupIndex + 1]?.[0].params || {}
       const {parentRefPath} = childParams
 
@@ -34,8 +34,7 @@ export default function Documents(props: DocumentsProps) {
         type,
         // Uncertain that this works as intended
         parentRefPath: parentRefPath ? pathFromString(parentRefPath) : [``],
-        // Added this to satisfy TS
-        template: type,
+        template: {id},
       })
     },
     [routerPanesState, groupIndex, handleEditReference]
