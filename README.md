@@ -1,3 +1,5 @@
+## Usage
+
 # sanity-plugin-documents-pane
 
 > **NOTE**
