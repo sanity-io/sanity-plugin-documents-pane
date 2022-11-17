@@ -51,3 +51,6 @@ yarn.lock
 # Compiled plugin
 /lib
 
+*.iml
+.idea/
+
