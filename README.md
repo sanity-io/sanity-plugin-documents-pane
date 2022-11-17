@@ -1,13 +1,7 @@
-## Usage
-
 # sanity-plugin-documents-pane
 
-> **NOTE**
->
-> This is the **Sanity Studio v3 version** of sanity-plugin-documents-pane.
->
-> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-documents-pane).
-
+>This is a **Sanity Studio v3** plugin.
+> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-documents-pane/tree/studio-v2).
 
 Displays the results of a GROQ query in a View Pane. With the ability to use field values in the current document as query parameters.
 
