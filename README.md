@@ -9,8 +9,15 @@ Displays the results of a GROQ query in a View Pane. With the ability to use fie
 
 ## Installation
 
+```sh
+yarn add sanity-plugin-documents-pane@studio-v2
 ```
-sanity install documents-pane@studio-v2
+
+Next, add `"documents-pane"` to `sanity.json` plugins array:
+```json
+"plugins": [
+  "documents-pane"
+]
 ```
 
 This plugin is designed to be used as a [Component inside of a View](https://www.sanity.io/docs/structure-builder-reference#c0c8284844b7).
