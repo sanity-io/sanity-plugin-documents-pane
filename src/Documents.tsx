@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react'
 import {Box, Button, Stack, Flex, Spinner} from '@sanity/ui'
 import {fromString as pathFromString} from '@sanity/util/paths'
-import {SanityPreview, useSchema} from 'sanity'
+import {Preview, useSchema} from 'sanity'
 import {usePaneRouter} from 'sanity/desk'
 
 import Debug from './Debug'
@@ -87,7 +87,7 @@ export default function Documents(props: DocumentsProps) {
               padding={2}
               mode="bleed"
             >
-              <SanityPreview value={doc} schemaType={schemaType} />
+              <Preview value={doc} schemaType={schemaType} />
             </Button>
           )
         })}
