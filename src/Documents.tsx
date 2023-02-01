@@ -1,8 +1,9 @@
 import React, {useCallback} from 'react'
-import {Box, Button, Stack, Flex, Spinner} from '@sanity/ui'
+import {Box, Button, Stack, Flex, Spinner, Card} from '@sanity/ui'
 import {fromString as pathFromString} from '@sanity/util/paths'
-import {Preview, useSchema} from 'sanity'
+import {Preview, useSchema, DefaultPreview} from 'sanity'
 import {usePaneRouter} from 'sanity/desk'
+import {WarningOutlineIcon} from '@sanity/icons'
 
 import Debug from './Debug'
 import Feedback from './Feedback'
@@ -77,10 +78,8 @@ export default function Documents(props: DocumentsProps) {
       <Stack padding={2} space={1}>
         {data.map((doc) => {
           const schemaType = schema.get(doc._type)
-          if (!schemaType) {
-            return null
-          }
-          return (
+
+          return schemaType ? (
             <Button
               key={doc._id}
               onClick={() => handleClick(doc._id, doc._type)}
@@ -89,6 +88,14 @@ export default function Documents(props: DocumentsProps) {
             >
               <Preview value={doc} schemaType={schemaType} />
             </Button>
+          ) : (
+            <Card radius={2} tone="caution" data-ui="Alert" padding={2} key={doc._id}>
+              <DefaultPreview
+                media={<WarningOutlineIcon />}
+                title="Unknown schema type found"
+                subtitle={`Encountered type "${doc._type}" that is not defined in the schema.`}
+              />
+            </Card>
           )
         })}
       </Stack>
