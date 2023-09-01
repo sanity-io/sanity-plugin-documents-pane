@@ -5,6 +5,14 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v2.1.0...v2.1.1) (2023-09-01)
+
+### Bug Fixes
+
+- **deps:** update dependencies (non-major) ([#13](https://github.com/sanity-io/sanity-plugin-documents-pane/issues/13)) ([4190889](https://github.com/sanity-io/sanity-plugin-documents-pane/commit/41908893752ab2a6701537362ebf650ca55aff67))
+- **deps:** update dependency react-fast-compare to v3.2.2 ([#43](https://github.com/sanity-io/sanity-plugin-documents-pane/issues/43)) ([0d4272a](https://github.com/sanity-io/sanity-plugin-documents-pane/commit/0d4272a5c32d295f3c6e5e6d01debff4598674ee))
+- **docs:** fixed install instruction ([e0cb7b2](https://github.com/sanity-io/sanity-plugin-documents-pane/commit/e0cb7b209fe769feb5785a2e32c16dc5f06a116f))
+
 ## [2.1.0](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v2.0.1...v2.1.0) (2023-02-02)
 
 ### Features
