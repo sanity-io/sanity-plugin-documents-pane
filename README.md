@@ -10,13 +10,13 @@ Displays the results of a GROQ query in a View Pane. With the ability to use fie
 ## Installation
 
 ```sh
-npm install --save sanity-plugin-documents-pane@studio-v3
+npm install --save sanity-plugin-documents-pane
 ```
 
 or
 
 ```sh
-yarn add sanity-plugin-documents-pane@studio-v3
+yarn add sanity-plugin-documents-pane
 ```
 
 This plugin is designed to be used as a [Component inside of a View](https://www.sanity.io/docs/structure-builder-reference#c0c8284844b7).
