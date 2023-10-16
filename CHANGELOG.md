@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v2.1.1...v2.1.2) (2023-10-16)
+
+### Bug Fixes
+
+- upgrade to latest hooks and components from plugin-utils ([#55](https://github.com/sanity-io/sanity-plugin-documents-pane/issues/55)) ([1975b08](https://github.com/sanity-io/sanity-plugin-documents-pane/commit/1975b08ea89155d6418cb3f69abf3ab02036debc))
+
 ## [2.1.1](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v2.1.0...v2.1.1) (2023-09-01)
 
 ### Bug Fixes
