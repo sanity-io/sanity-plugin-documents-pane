@@ -1,13 +1,12 @@
 import React, {useCallback} from 'react'
 import {Box, Button, Stack, Flex, Spinner, Card} from '@sanity/ui'
 import {fromString as pathFromString} from '@sanity/util/paths'
-import {Preview, useSchema, DefaultPreview} from 'sanity'
+import {Preview, useSchema, DefaultPreview, SanityDocument} from 'sanity'
 import {usePaneRouter} from 'sanity/desk'
 import {WarningOutlineIcon} from '@sanity/icons'
+import {Feedback, useListeningQuery} from 'sanity-plugin-utils'
 
 import Debug from './Debug'
-import Feedback from './Feedback'
-import useListeningQuery from './hooks/useListeningQuery'
 import {DocumentsPaneInitialValueTemplate} from './types'
 import NewDocument from './NewDocument'
 
@@ -23,7 +22,10 @@ export default function Documents(props: DocumentsProps) {
   const {routerPanesState, groupIndex, handleEditReference} = usePaneRouter()
   const schema = useSchema()
 
-  const {loading, error, data} = useListeningQuery(query, params)
+  const {loading, error, data} = useListeningQuery<SanityDocument[]>(query, {
+    params,
+    initialValue: [],
+  })
 
   const handleClick = useCallback(
     (id: string, type: string) => {
