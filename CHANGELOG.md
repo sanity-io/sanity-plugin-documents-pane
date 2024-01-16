@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v2.1.2...v2.2.0) (2024-01-16)
+
+### Features
+
+- support perspectives ([#63](https://github.com/sanity-io/sanity-plugin-documents-pane/issues/63)) ([e2eb3bb](https://github.com/sanity-io/sanity-plugin-documents-pane/commit/e2eb3bb791d1ab12525ae02dc357d7768af1d846))
+
 ## [2.1.2](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v2.1.1...v2.1.2) (2023-10-16)
 
 ### Bug Fixes
