@@ -32,8 +32,9 @@ import DocumentsPane from 'sanity-plugin-documents-pane'
 S.view
   .component(DocumentsPane)
   .options({
-    query: `*[!(_id in path("drafts.**")) && references($id)]`,
+    query: `*[references($id)]`,
     params: {id: `_id`},
+    options: {perspective: 'previewDrafts'}
   })
   .title('Incoming References')
 ```
@@ -47,6 +48,7 @@ The `.options()` configuration works as follows:
 - `useDraft` (bool, optional, default: `false`) When populating the `params` values, it will use the `published` version of the document by default. Not permitted if using a function for `params` as the function will determine which version of the document to use.
 - `debug` (bool, optional, default: `false`) In case of an error or the query returning no documents, setting to `true` will display the query and params that were used.
 - `initialValueTemplates` (function, optional) A function that receives the various displayed, draft, and published versions of the document, and returns a list of initial value templates. These will be used to define buttons at the top of the list so users can create new related documents.
+- `options` (object, optional) An object of options passed to the listening query. Includes support for `apiVersion` and `perspective`.
 
 ## Resolving query parameters with a function and providing initial value templates
 

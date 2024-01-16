@@ -1,8 +1,8 @@
 import React, {useCallback} from 'react'
 import {Box, Button, Stack, Flex, Spinner, Card} from '@sanity/ui'
 import {fromString as pathFromString} from '@sanity/util/paths'
-import {Preview, useSchema, DefaultPreview, SanityDocument} from 'sanity'
-import {usePaneRouter} from 'sanity/desk'
+import {Preview, useSchema, DefaultPreview, SanityDocument, ListenQueryOptions} from 'sanity'
+import {usePaneRouter} from 'sanity/structure'
 import {WarningOutlineIcon} from '@sanity/icons'
 import {Feedback, useListeningQuery} from 'sanity-plugin-utils'
 
@@ -15,16 +15,18 @@ type DocumentsProps = {
   params: {[key: string]: string}
   debug: boolean
   initialValueTemplates: DocumentsPaneInitialValueTemplate[]
+  options: ListenQueryOptions
 }
 
 export default function Documents(props: DocumentsProps) {
-  const {query, params, debug, initialValueTemplates} = props
+  const {query, params, options, debug, initialValueTemplates} = props
   const {routerPanesState, groupIndex, handleEditReference} = usePaneRouter()
   const schema = useSchema()
 
   const {loading, error, data} = useListeningQuery<SanityDocument[]>(query, {
     params,
     initialValue: [],
+    options,
   })
 
   const handleClick = useCallback(
@@ -80,6 +82,11 @@ export default function Documents(props: DocumentsProps) {
       <Stack padding={2} space={1}>
         {data.map((doc) => {
           const schemaType = schema.get(doc._type)
+
+          // Fixes display issue with document preview when perspective is 'previewDrafts'
+          if ('_originalId' in doc && typeof doc._originalId === 'string') {
+            doc._id = doc._originalId
+          }
 
           return schemaType ? (
             <Button

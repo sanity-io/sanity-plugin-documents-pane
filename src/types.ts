@@ -1,11 +1,8 @@
-import {SanityDocument} from '@sanity/client'
+import React from 'react'
+import {ListenQueryOptions} from 'sanity'
+import {UserViewComponent} from 'sanity/structure'
 
-export interface DocumentVersionsCollection {
-  displayed: SanityDocument
-  published: SanityDocument
-  draft: SanityDocument
-  historical: SanityDocument
-}
+export type DocumentVersionsCollection = React.ComponentProps<UserViewComponent>['document']
 
 // eslint-disable-next-line prettier/prettier
 export type DocumentsPaneQueryParams = (params: {document: DocumentVersionsCollection}) => ({[key: string]: string}) | {[key: string]: string}
@@ -26,9 +23,7 @@ export type DocumentsPaneOptions = {
   debug?: boolean
   useDraft?: boolean
   initialValueTemplates?: DocumentsPaneInitialValueTemplateResolver
+  options?: ListenQueryOptions
 }
 
-export type DocumentsPaneProps = {
-  document: DocumentVersionsCollection
-  options: DocumentsPaneOptions
-}
+export type DocumentsPaneProps = React.ComponentProps<UserViewComponent<DocumentsPaneOptions>>

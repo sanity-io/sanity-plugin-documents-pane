@@ -15,10 +15,16 @@ function defaultResolver(options: ResolveParamsOptions): {
   const {params, document, useDraft} = options
 
   // params is optional
-  if (!params) return {}
+  if (!params) {
+    return {}
+  }
 
   // legacy useDraft behaviour
   const doc = useDraft ? document.displayed : document.published
+
+  if (!doc) {
+    return {}
+  }
 
   return Object.keys(params).reduce(
     (acc, key) => ({
