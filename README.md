@@ -1,6 +1,6 @@
 # sanity-plugin-documents-pane
 
->This is a **Sanity Studio v3** plugin.
+> This is a **Sanity Studio v3** plugin.
 > For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/sanity-plugin-documents-pane/tree/studio-v2).
 
 Displays the results of a GROQ query in a View Pane. With the ability to use field values in the current document as query parameters.
@@ -34,7 +34,7 @@ S.view
   .options({
     query: `*[references($id)]`,
     params: {id: `_id`},
-    options: {perspective: 'previewDrafts'}
+    options: {perspective: 'previewDrafts'},
   })
   .title('Incoming References')
 ```
@@ -49,6 +49,7 @@ The `.options()` configuration works as follows:
 - `debug` (bool, optional, default: `false`) In case of an error or the query returning no documents, setting to `true` will display the query and params that were used.
 - `initialValueTemplates` (function, optional) A function that receives the various displayed, draft, and published versions of the document, and returns a list of initial value templates. These will be used to define buttons at the top of the list so users can create new related documents.
 - `options` (object, optional) An object of options passed to the listening query. Includes support for `apiVersion` and `perspective`.
+- `duplicate` (bool, optional, default: `false`) Enables a duplicate action in the context of the document list of the document pane. Useful for retaining existing editing context when needing to create new incoming references.
 
 ## Resolving query parameters with a function and providing initial value templates
 
@@ -118,4 +119,3 @@ Run ["CI & Release" workflow](https://github.com/sanity-io/sanity-plugin-documen
 Make sure to select the main branch and check "Release new version".
 
 Semantic release will only release on configured branches, so it is safe to run release on any branch.
-
