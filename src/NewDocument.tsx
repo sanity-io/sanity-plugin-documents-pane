@@ -2,7 +2,7 @@ import {Button, Card, Flex} from '@sanity/ui'
 import React from 'react'
 import {DocumentsPaneInitialValueTemplate} from './types'
 import {ComposeIcon} from '@sanity/icons'
-import {usePaneRouter} from 'sanity/desk'
+import {usePaneRouter} from 'sanity/structure'
 import {uuid} from '@sanity/uuid'
 
 interface NewDocumentProps {
@@ -16,7 +16,7 @@ export default function NewDocument(props: NewDocumentProps) {
   if (!initialValueTemplates.length) return null
 
   return (
-    <Card borderBottom={true} padding={2}>
+    <Card borderBottom padding={2}>
       <Flex justify="flex-end" gap={1}>
         {initialValueTemplates.map((template) => {
           if (!template.template) {

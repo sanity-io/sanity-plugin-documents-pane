@@ -5,7 +5,9 @@ import {UserViewComponent} from 'sanity/structure'
 export type DocumentVersionsCollection = React.ComponentProps<UserViewComponent>['document']
 
 // eslint-disable-next-line prettier/prettier
-export type DocumentsPaneQueryParams = (params: {document: DocumentVersionsCollection}) => ({[key: string]: string}) | {[key: string]: string}
+export type DocumentsPaneQueryParams = (params: {
+  document: DocumentVersionsCollection
+}) => {[key: string]: string} | {[key: string]: string}
 
 export interface DocumentsPaneInitialValueTemplate {
   schemaType: string
@@ -15,7 +17,9 @@ export interface DocumentsPaneInitialValueTemplate {
 }
 
 // eslint-disable-next-line prettier/prettier
-export type DocumentsPaneInitialValueTemplateResolver = (params: {document: DocumentVersionsCollection}) => DocumentsPaneInitialValueTemplate[]
+export type DocumentsPaneInitialValueTemplateResolver = (params: {
+  document: DocumentVersionsCollection
+}) => DocumentsPaneInitialValueTemplate[]
 
 export type DocumentsPaneOptions = {
   query: string
@@ -24,6 +28,7 @@ export type DocumentsPaneOptions = {
   useDraft?: boolean
   initialValueTemplates?: DocumentsPaneInitialValueTemplateResolver
   options?: ListenQueryOptions
+  duplicate?: boolean
 }
 
 export type DocumentsPaneProps = React.ComponentProps<UserViewComponent<DocumentsPaneOptions>>

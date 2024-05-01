@@ -17,6 +17,7 @@ export default function DocumentsPane(props: DocumentsPaneProps) {
     debug = false,
     initialValueTemplates: initialValueTemplatesResolver,
     options = {},
+    duplicate = false,
   } = props.options
 
   if (useDraft && typeof params === 'function') {
@@ -57,6 +58,7 @@ export default function DocumentsPane(props: DocumentsPaneProps) {
       options={options}
       debug={debug}
       initialValueTemplates={initialValueTemplates}
+      duplicate={duplicate}
     />
   )
 }

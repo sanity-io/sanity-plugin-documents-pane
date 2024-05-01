@@ -1,7 +1,14 @@
 import React, {useCallback} from 'react'
 import {Box, Button, Stack, Flex, Spinner, Card} from '@sanity/ui'
 import {fromString as pathFromString} from '@sanity/util/paths'
-import {Preview, useSchema, DefaultPreview, SanityDocument, ListenQueryOptions} from 'sanity'
+import {
+  Preview,
+  useSchema,
+  DefaultPreview,
+  SanityDocument,
+  ListenQueryOptions,
+  getPublishedId,
+} from 'sanity'
 import {usePaneRouter} from 'sanity/structure'
 import {WarningOutlineIcon} from '@sanity/icons'
 import {Feedback, useListeningQuery} from 'sanity-plugin-utils'
@@ -9,6 +16,7 @@ import {Feedback, useListeningQuery} from 'sanity-plugin-utils'
 import Debug from './Debug'
 import {DocumentsPaneInitialValueTemplate} from './types'
 import NewDocument from './NewDocument'
+import DuplicateDocument from './DuplicateDocument'
 
 type DocumentsProps = {
   query: string
@@ -16,10 +24,11 @@ type DocumentsProps = {
   debug: boolean
   initialValueTemplates: DocumentsPaneInitialValueTemplate[]
   options: ListenQueryOptions
+  duplicate: boolean
 }
 
 export default function Documents(props: DocumentsProps) {
-  const {query, params, options, debug, initialValueTemplates} = props
+  const {query, params, options, debug, initialValueTemplates, duplicate} = props
   const {routerPanesState, groupIndex, handleEditReference} = usePaneRouter()
   const schema = useSchema()
 
@@ -91,11 +100,19 @@ export default function Documents(props: DocumentsProps) {
           return schemaType ? (
             <Button
               key={doc._id}
+              // eslint-disable-next-line react/jsx-no-bind
               onClick={() => handleClick(doc._id, doc._type)}
               padding={2}
               mode="bleed"
             >
-              <Preview value={doc} schemaType={schemaType} />
+              <Preview
+                value={doc}
+                schemaType={schemaType}
+                actions={
+                  duplicate && <DuplicateDocument id={getPublishedId(doc._id)} type={doc._type} />
+                }
+                layout="block"
+              />
             </Button>
           ) : (
             <Card radius={2} tone="caution" data-ui="Alert" padding={2} key={doc._id}>
