@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.0](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v2.2.2...v2.3.0) (2024-05-01)
+
+### Features
+
+- added duplicate action to doc list ([#68](https://github.com/sanity-io/sanity-plugin-documents-pane/issues/68)) ([8d65f8f](https://github.com/sanity-io/sanity-plugin-documents-pane/commit/8d65f8faedc23a70ee192a59e56503fc5da3cc46))
+
 ## [2.2.2](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v2.2.1...v2.2.2) (2024-04-19)
 
 ### Bug Fixes
