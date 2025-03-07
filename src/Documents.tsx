@@ -32,11 +32,16 @@ export default function Documents(props: DocumentsProps) {
   const {routerPanesState, groupIndex, handleEditReference} = usePaneRouter()
   const schema = useSchema()
 
-  const {loading, error, data} = useListeningQuery<SanityDocument[]>(query, {
+  const {
+    loading,
+    error,
+    data: _data,
+  } = useListeningQuery<SanityDocument[]>(query, {
     params,
     initialValue: [],
     options,
   })
+  const data = _data as SanityDocument[]
 
   const handleClick = useCallback(
     (id: string, type: string) => {
