@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.0](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v2.3.0...v2.4.0) (2025-03-07)
+
+### Features
+
+- add react 19 to peer deps ([620f2ad](https://github.com/sanity-io/sanity-plugin-documents-pane/commit/620f2ad86418b234c56acf128976cc0b63ca16cb))
+
 ## [2.3.0](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v2.2.2...v2.3.0) (2024-05-01)
 
 ### Features
