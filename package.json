@@ -53,15 +53,15 @@
     }
   },
   "dependencies": {
-    "@sanity/icons": "^2.0.0",
-    "@sanity/incompatible-plugin": "^1.0.4",
-    "@sanity/ui": "^1.0 || ^2.0",
-    "@sanity/util": "^3.0.0",
-    "@sanity/uuid": "^3.0.1",
+    "@sanity/icons": "^3.7.0",
+    "@sanity/incompatible-plugin": "^1.0.5",
+    "@sanity/ui": "^2.15.2",
+    "@sanity/util": "^3.78.1",
+    "@sanity/uuid": "^3.0.2",
     "dlv": "^1.1.3",
-    "react-fast-compare": "^3.2.0",
-    "rxjs": "^7.0.0",
-    "sanity-plugin-utils": "^1.6.3"
+    "react-fast-compare": "^3.2.2",
+    "rxjs": "^7.8.2",
+    "sanity-plugin-utils": "^1.6.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
@@ -93,8 +93,8 @@
   },
   "peerDependencies": {
     "@sanity/ui": "^1.0 || ^2.0",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.3 || ^19",
+    "react-dom": "^18.3 || ^19",
     "sanity": "^3.24.1",
     "styled-components": "^5.0 || ^6.0"
   },
