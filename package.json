@@ -92,11 +92,10 @@
     "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "@sanity/ui": "^1.0 || ^2.0",
     "react": "^18.3 || ^19",
     "react-dom": "^18.3 || ^19",
-    "sanity": "^3.24.1",
-    "styled-components": "^5.0 || ^6.0"
+    "sanity": "^3.24.1 || ^4.0.0-0",
+    "styled-components": "^6.1"
   },
   "engines": {
     "node": ">=18"
