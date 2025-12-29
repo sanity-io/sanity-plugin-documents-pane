@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v3.0.1...v3.0.2) (2025-12-29)
+
+### Bug Fixes
+
+- **deps:** allow studio v5 in peer deps ranges ([#78](https://github.com/sanity-io/sanity-plugin-documents-pane/issues/78)) ([ab115c8](https://github.com/sanity-io/sanity-plugin-documents-pane/commit/ab115c8c90321ef22ebea046b8e641ccf43f26e5))
+
 ## [3.0.1](https://github.com/sanity-io/sanity-plugin-documents-pane/compare/v3.0.0...v3.0.1) (2025-11-04)
 
 ### Bug Fixes
