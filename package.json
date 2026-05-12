@@ -64,8 +64,8 @@
     "sanity-plugin-utils": "^1.7.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.2.0",
-    "@commitlint/config-conventional": "^17.2.0",
+    "@commitlint/cli": "^18.6.1",
+    "@commitlint/config-conventional": "^18.6.3",
     "@sanity/pkg-utils": "^2.0.0",
     "@sanity/plugin-kit": "^2.1.5",
     "@sanity/semantic-release-preset": "^4.1.4",
